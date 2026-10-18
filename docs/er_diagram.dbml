@@ -1,0 +1,40 @@
+Table currencies{
+  code varchar(3) [pk]
+  name varchar(58) [not null]
+  usd_per_unit numeric(18,8) [not null]
+  updated_at timestamptz [not null]
+}
+
+Table countries {
+  id bigint [pk, increment]
+  name varchar(100) [not null, unique]
+  iso_code char(2) [not null, unique]
+  default_currency_code varchar(3) [not null]
+}
+
+Table users {
+  id bigint [pk, increment]
+  email varchar(255) [not null, unique]
+  password_hash varchar(255) [not null]
+  role varchar(20) [not null, default: 'HR']
+  active boolean [not null, default: true]
+  created_at timestamtz [not null]
+}
+
+Table employees {
+  id bigint [pk, increment]
+  employee_code varchar(30) [not null, unique]
+  first_name varchar(100) [not null]
+  last_name varchar(100) [not null]
+  email varchar(255) [not null, unique]
+  country_id bigint [not null]
+  salary_currency varchar(3) [not null]
+  annual_salary numeric(15, 2) [not null]
+  status varchar(10) [not null, default: 'ACTIVE']
+  created_at timestamptz [not null]
+  updated_at timestamptz [not null]
+}
+
+Ref: countries.default_currency_code > currencies.code
+Ref: employees.country_id > countries.id
+Ref: employees.salary_currency > currencies.code 
