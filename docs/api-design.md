@@ -76,11 +76,24 @@ Request:
 
 Response: 201 Created with the created employee.
 
-5) Median salary
+5) Update employee details
 
 Method: PUT
 Endpoint: /api/employees/{id}
 Purpose: Update employee details or salary
+
+
+6) Deactivate employee
+
+Method: PATCH
+Endpoint: /api/employees/{id}/deactivate
+Purpose: Deactivate employee
+
+7) Median salary
+
+Method: GET
+Endpoint: /api/salaries/median?countryId=1
+Purpose: Country median salary; omit countryId for global median
 
 Response:
 {
@@ -90,14 +103,4 @@ Response:
   "employeeCount": 450
 }
 
-For the global median, omit countryId and return "scope": "GLOBAL".
-
-6) 
-Method: PATCH
-Endpoint: /api/employees/{id}/deactivate
-Purpose: Deactivate employee
-
-7) 
-Method: GET
-Endpoint: /api/salaries/median?countryId=1
-Purpose: Country median salary; omit countryId for global median
+For the global median, omit countryId and return "scope": "GLOBAL"
