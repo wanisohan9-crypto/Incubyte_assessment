@@ -1,0 +1,6 @@
+.spacer { flex: 1 1 auto; }
+.container { padding: 16px; max-width: 1100px; margin: 0 auto; }
+.filters { display: flex; gap: 12px; align-items: center; margin: 12px 0; flex-wrap: wrap; }
+.median { margin-top: 12px; }
+.muted { color: #666; }
+table { width: 100%; }

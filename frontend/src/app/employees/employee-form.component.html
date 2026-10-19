@@ -1,0 +1,51 @@
+<mat-toolbar color="primary">
+  <span>{{ isEdit ? 'Edit employee' : 'Add employee' }}</span>
+</mat-toolbar>
+
+<div class="container">
+  <mat-card>
+    <mat-card-content>
+      <div class="grid">
+        <mat-form-field appearance="outline">
+          <mat-label>Employee code</mat-label>
+          <input matInput [(ngModel)]="form.employeeCode" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>First name</mat-label>
+          <input matInput [(ngModel)]="form.firstName" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Last name</mat-label>
+          <input matInput [(ngModel)]="form.lastName" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" [(ngModel)]="form.email" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Country</mat-label>
+          <mat-select [(ngModel)]="form.countryId" (selectionChange)="onCountryChange()">
+            @for (c of countries(); track c.id) {
+              <mat-option [value]="c.id">{{ c.name }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Annual salary</mat-label>
+          <input matInput type="number" [(ngModel)]="form.annualSalary" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Currency</mat-label>
+          <input matInput [(ngModel)]="form.salaryCurrency" maxlength="3" />
+        </mat-form-field>
+      </div>
+      @if (error()) {
+        <p class="error">{{ error() }}</p>
+      }
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="save()">Save</button>
+      <a mat-button routerLink="/employees">Cancel</a>
+    </mat-card-actions>
+  </mat-card>
+</div>

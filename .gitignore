@@ -8,3 +8,6 @@ Thumbs.db
 *.db
 *.db-journal
 *.sqlite
+node_modules/
+frontend/dist/
+frontend/.angular/
