@@ -74,6 +74,19 @@ npx ng test --watch=false
 └── frontend/    Angular app (login, employee list, add/edit form)
 ```
 
+## API quick check (API testing without using browser)
+
+```powershell
+# Get a token
+Invoke-WebRequest -Uri http://localhost:8080/api/auth/login -Method POST `
+  -ContentType 'application/json' `
+  -Body '{"email":"hr@company.com","password":"Password123!"}'
+```
+
+Then call any endpoint with header: `Authorization: Bearer <token>`
+
+All endpoints are listed in `docs/api-design.md`.
+
 ## Troubleshooting
 
 - **Login does nothing / CORS error** → make sure the backend is running on port 8080.
